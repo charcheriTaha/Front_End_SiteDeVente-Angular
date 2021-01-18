@@ -1,0 +1,10 @@
+<div *ngFor="let commande of commandes">
+  <p>{{commande.date}}</p>
+
+  <div *ngFor="let produit of commande.produits">
+    <p>{{produit.nom}}</p>
+    <p>{{produit.description}}</p>
+    <p>{{produit.prix}}</p>
+    <p>{{produit.status}}</p>
+  </div>
+</div>

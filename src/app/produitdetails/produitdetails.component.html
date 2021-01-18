@@ -1,0 +1,32 @@
+
+<section class="login-block">
+  <div class="container">
+    <div class="row">
+      <div class=" offset-md-2 col-md-8 login-sec">
+        <h2 class="text-center">Update Produit</h2>
+        <div class="form-group">
+          <label class="text-uppercase">Nom</label>
+          <input type="text" class="form-control" [(ngModel)]="nom" >
+        </div>
+        <div class="form-group">
+          <label class="text-uppercase">Description</label>
+          <input type="text" class="form-control" [(ngModel)]="description" >
+        </div>
+        <div class="form-group">
+          <label class="text-uppercase">prix</label>
+          <input type="text" class="form-control" [(ngModel)]="prix" >
+        </div>
+        <label class="text-uppercase">status</label>
+        <input type="text" class="form-control" [(ngModel)]="status" >
+      </div>
+
+      </div>
+    <div class="offset-md-2">
+    <div class="row " style="margin-top: 40px" >
+      <button class="btn btn-secondary" style="margin-left: 20px" type="submit" (click)="updateProduit(produit)">Enregistrer</button>
+      <button class="btn btn-secondary" style="margin-left: 20px"><a [routerLink]="['/Main/accueil']">Retour à la page d'accueil</a></button>
+    </div>
+    </div>
+  </div>
+</section>
+

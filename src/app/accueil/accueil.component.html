@@ -1,0 +1,366 @@
+<header class="header">
+
+  <!-- Top Bar -->
+  <div class="top_bar">
+    <div class="container">
+      <div class="row">
+        <div class="col d-flex flex-row">
+          <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="assets/../../assets/images/phone.png" alt=""></div>+216 92269655</div>
+          <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="assets/../../assets/images/mail.png" alt=""></div><a href="mailto:charcheri.taha@gmail.com">charcheri.taha@gmail.com</a></div>
+          <div class="top_bar_content ml-auto">
+
+            <div class="top_bar_user">
+              <div class="user_icon"><img src="assets/../../assets/images/user.svg" alt=""></div>
+              <div><a [routerLink]="['/Main/registration']">Register</a></div>
+              <div><a [routerLink]="['/Main/login']">Login</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="../../assets/img/img1.png" alt="Los Angeles" style="width:100%;">
+        </div>
+
+        <div class="item">
+          <img src="../../assets/img/1.jpg" alt="Chicago" style="width:100%;">
+        </div>
+
+        <div class="item">
+          <img src="../../assets/img/2.png" alt="New york" style="width:100%;">
+        </div>
+
+        <div class="item">
+          <img src="../../assets/img/3.jpg" alt="New york" style="width:100%;">
+        </div>
+
+        <div class="item">
+          <img src="../../assets/img/4.jpg" alt="New york" style="width:100%;">
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+
+</header>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin-top: 25px">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="row">
+      <div class="col-lg-8">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active ">
+        <a class="menuStyle nav-link " routerLink="/Main/accueil">Accueil <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="menuStyle nav-link" href="#">List de Commandes </a>
+      </li>
+      <li class="nav-item active">
+        <a class="menuStyle nav-link" href="#">List de Produits </a>
+      </li>
+      <li class="nav-item dropdown active">
+        <a class="menuStyle nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Catégorie
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="menuStyle nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+      </div>
+      <div class="col-lg-4">
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class=" btnSearch menuStyle btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    </div>
+    </div>
+  </div>
+</nav>
+<div class="row" style="margin-left: 5%  ;margin-top: 30px">
+<div class="card col-lg-2 col-md-5 col-xs-6" style="margin: 10px" *ngFor="let produit of produits">
+  <img class="card-img-top" src="..." alt="Card image cap">
+  <div class="card-body">
+    <h2 class="card-title"><p>{{produit.nom}}</p></h2>
+    <h5 class="card-text font-weight-bold" > Prix:<p>{{produit.prix}}</p></h5>
+    <h3 class="card-footer"><p>{{produit.status}}</p></h3>
+
+  <button class="btn btn-primary" style="margin: 5px" (click)="importProduit(produit)" *ngIf="loginservice.isAdmin()" >Modiffier</button>
+  <button class="btn btn-primary" style="margin: 5px"(click)="deleteProduitById(produit.id)" *ngIf="loginservice.isAdmin()">Supprimer</button>
+  <button class="btn btn-primary" style="margin: 5px"(click)="commanderProduit(produit.id)">Commander</button>
+  </div>
+</div>
+</div>
+<!-- Popular Categories ******************************************************************************************************-->
+
+<div class="row" style="margin-top: 150px"><div class="offset-5"><h1>Popular Catégories </h1></div></div>
+<div class="offset-2">
+<div class="row">
+
+      <!-- Popular Categories Item -->
+      <div class="owl-item">
+        <div class="popular_category d-flex flex-column align-items-center justify-content-center">
+          <div class="popular_category_image"><img src="../../assets/images/popular_1.png" alt=""></div>
+          <div class="popular_category_text">Smartphones & Tablets</div>
+        </div>
+      </div>
+
+      <!-- Popular Categories Item -->
+      <div class="owl-item">
+        <div class="popular_category d-flex flex-column align-items-center justify-content-center">
+          <div class="popular_category_image"><img src="../../assets/images/popular_2.png" alt=""></div>
+          <div class="popular_category_text">Computers & Laptops</div>
+        </div>
+      </div>
+
+      <!-- Popular Categories Item -->
+      <div class="owl-item">
+        <div class="popular_category d-flex flex-column align-items-center justify-content-center">
+          <div class="popular_category_image"><img src="../../assets/images/popular_3.png" alt=""></div>
+          <div class="popular_category_text">Gadgets</div>
+        </div>
+      </div>
+
+      <!-- Popular Categories Item -->
+      <div class="owl-item">
+        <div class="popular_category d-flex flex-column align-items-center justify-content-center">
+          <div class="popular_category_image"><img src="../../assets/images/popular_4.png" alt=""></div>
+          <div class="popular_category_text">Video Games & Consoles</div>
+        </div>
+      </div>
+
+      <!-- Popular Categories Item -->
+      <div class="owl-item">
+        <div class="popular_category d-flex flex-column align-items-center justify-content-center">
+          <div class="popular_category_image"><img src="../../assets/images/popular_5.png" alt=""></div>
+          <div class="popular_category_text">Accessories</div>
+        </div>
+      </div>
+
+</div>
+</div>
+<!-- Banner 2 Slider Item **********************************************************************************-->
+<div class="row" style="margin-top: 150px"><div class="offset-5"><h1>Nouveau Produit </h1></div></div>
+<div class="owl-item">
+  <div class="banner_2_item">
+    <div class="container fill_height">
+      <div class="row fill_height "style="margin-left: 20px">
+        <div class="col-lg-4 col-md-6 fill_height">
+          <div class="banner_2_content">
+            <div class="banner_2_category"></div>
+            <div class="banner_2_title"><h1>MacBook Air 13</h1></div>
+            <div class="banner_2_text" style="color:gray" >Puce Apple M1 avec CPU 8 cœurs et GPU 7 cœurs
+              256 Go de stockage
+              Puce Apple M1 avec CPU 8 cœurs, GPU 7 cœurs et Neural Engine 16 cœurs
+              8 Go de mémoire unifiée
+              SSD de 256 Go¹
+              Écran Retina avec affichage True Tone
+              Magic Keyboard
+              Touch ID
+              Trackpad Force Touch
+              Deux ports Thunderbolt/USB 4</div>
+            <div class="rating_r rating_r_4 banner_2_rating"><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+
+        </div>
+        <div class="col-lg-8 col-md-6 fill_height">
+          <div class="banner_2_image_container">
+            <div class="banner_2_image"><img src="../../assets/images/banner_2_product.png" alt=""></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Recently Viewed *******************************************************************************************-->
+
+<div class="row" style="margin-top: 150px"><div class="offset-5"><h1>Nouveau Accessoires</h1></div></div>
+<div class="offset-3">
+<div class="row">
+          <!-- Recently Viewed Slider -->
+
+            <!-- Recently Viewed Item -->
+            <div class="owl-item">
+              <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                <div class="viewed_image" style="margin-left: 10px"><img src="../../assets/images/view_1.jpg" alt=""></div>
+                <div class="viewed_content text-center" >
+                  <div class="viewed_price">$225<span>$300</span></div>
+                  <div class="viewed_name"><a href="#">Beoplay H7</a></div>
+                </div>
+                <ul class="item_marks">
+                  <li class="item_mark item_discount">-25%</li>
+                  <li class="item_mark item_new">new</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Recently Viewed Item -->
+            <div class="owl-item">
+              <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
+                <div class="viewed_image"><img src="../../assets/images/view_2.jpg" alt=""></div>
+                <div class="viewed_content text-center">
+                  <div class="viewed_price">$379</div>
+                  <div class="viewed_name"><a href="#">LUNA Smartphone</a></div>
+                </div>
+                <ul class="item_marks">
+                  <li class="item_mark item_discount">-25%</li>
+                  <li class="item_mark item_new">new</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Recently Viewed Item -->
+            <div class="owl-item">
+              <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
+                <div class="viewed_image"><img src="../../assets/images/view_3.jpg" alt=""></div>
+                <div class="viewed_content text-center">
+                  <div class="viewed_price">$225</div>
+                  <div class="viewed_name"><a href="#">Samsung J730F...</a></div>
+                </div>
+                <ul class="item_marks">
+                  <li class="item_mark item_discount">-25%</li>
+                  <li class="item_mark item_new">new</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Recently Viewed Item -->
+            <div class="owl-item">
+              <div class="viewed_item is_new d-flex flex-column align-items-center justify-content-center text-center">
+                <div class="viewed_image"><img src="../../assets/images/view_4.jpg" alt=""></div>
+                <div class="viewed_content text-center">
+                  <div class="viewed_price">$379</div>
+                  <div class="viewed_name"><a href="#">Huawei MediaPad...</a></div>
+                </div>
+                <ul class="item_marks">
+                  <li class="item_mark item_discount">-25%</li>
+                  <li class="item_mark item_new">new</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Recently Viewed Item -->
+            <div class="owl-item">
+              <div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
+                <div class="viewed_image"><img src="../../assets/images/view_5.jpg" alt=""></div>
+                <div class="viewed_content text-center">
+                  <div class="viewed_price">$225<span>$300</span></div>
+                  <div class="viewed_name"><a href="#">Sony PS4 Slim</a></div>
+                </div>
+                <ul class="item_marks">
+                  <li class="item_mark item_discount">-25%</li>
+                  <li class="item_mark item_new">new</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Recently Viewed Item -->
+            <div class="owl-item">
+              <div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
+                <div class="viewed_image"><img src="../../assets/images/view_6.jpg" alt=""></div>
+                <div class="viewed_content text-center">
+                  <div class="viewed_price">$375</div>
+                  <div class="viewed_name"><a href="#">Speedlink...</a></div>
+                </div>
+                <ul class="item_marks">
+                  <li class="item_mark item_discount">-25%</li>
+                  <li class="item_mark item_new">new</li>
+                </ul>
+              </div>
+            </div>
+       </div>
+</div>
+<!-- 7achwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww-->
+
+<!-- foooooooooooooooooooooooooooooooooooooooooooooooooooooterrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr-->
+<footer class="flex-rw" style="margin-top: 200px">
+  <ul class="footer-list-top">
+    <li>
+      <h4 class="footer-list-header">About TahaNet</h4></li>
+    <li><a href='/shop/about-mission' class="generic-anchor footer-list-anchor" itemprop="significantLink">GET TO KNOW US</a></li>
+    <li><a href='/promos.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">PROMOS</a></li>
+    <li><a href='/retailers/new-retailers.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">BECOME A RETAILER</a></li>
+
+    <li><a href='/job-openings.html' itemprop="significantLink" class="generic-anchor footer-list-anchor">JOB OPENINGS</a></li>
+
+    <li><a href='/shop/about-show-schedule' class="generic-anchor footer-list-anchor" itemprop="significantLink">EVENTS</a></li>
+  </ul>
+  <ul class="footer-list-top">
+    <li>
+      <h4 class="footer-list-header">The Gift Selection</h4></li>
+
+
+    <li><a href='/Angels/cat/id/70' class="generic-anchor footer-list-anchor">ANGEL FIGURINES</a></li>
+    <li><a href='/Home-Decor/cat/id/64' class="generic-anchor footer-list-anchor">HOME DECOR</a></li>
+    <li><a href='/Mugs/cat/id/32' class="generic-anchor footer-list-anchor">MUGS</a></li>
+    <li><a href='/Pet-Lover/cat/id/108' class="generic-anchor footer-list-anchor">PET LOVER</a></li>
+    <li><a href='/Ladies-Accessories/cat/id/117' class="generic-anchor footer-list-anchor" target="_blank">HANDBAGS & JEWELRY</a></li>
+  </ul>
+  <ul class="footer-list-top">
+    <li id='help'>
+      <h4 class="footer-list-header">Please Help Me</h4></li>
+    <li><a href='/shop/about-contact' class="generic-anchor footer-list-anchor" itemprop="significantLink">CONTACT</a></li>
+    <li><a href='/faq.html' class="generic-anchor footer-list-anchor" itemprop="significantLink">FAQ</a></li>
+    <li id='find-a-store'><a href='/shop/store-locator' class="generic-anchor footer-list-anchor" itemprop="significantLink">STORE LOCATOR</a></li>
+    <li id='user-registration'><a href='/shop/user-registration?URL=' class="generic-anchor footer-list-anchor" itemprop="significantLink">NEW USERS</a></li>
+    <li id='order-tracking'><a href='/shop/order-status' itemprop="significantLink" class="generic-anchor footer-list-anchor">ORDER STATUS</a></li>
+  </ul>
+  <section class="footer-social-section flex-rw">
+      <span class="footer-social-overlap footer-social-connect">
+      CONNECT <span class="footer-social-small">with</span> US
+      </span>
+    <span class="footer-social-overlap footer-social-icons-wrapper">
+      <a href="https://www.pinterest.com/paviliongift/" class="generic-anchor" target="_blank" title="Pinterest" itemprop="significantLink"><i class="fa fa-pinterest"></i></a>
+      <a href="https://www.facebook.com/paviliongift" class="generic-anchor" target="_blank" title="Facebook" itemprop="significantLink"><i class="fa fa-facebook"></i></a>
+      <a href="https://twitter.com/PavilionGiftCo" class="generic-anchor" target="_blank" title="Twitter" itemprop="significantLink"><i class="fa fa-twitter"></i></a>
+      <a href="http://instagram.com/paviliongiftcompany" class="generic-anchor" target="_blank" title="Instagram" itemprop="significantLink"><i class="fa fa-instagram"></i></a>
+      <a href="https://www.youtube.com/channel/UCYgUODvd0qXbu_LkUWpTVEg" class="generic-anchor" target="_blank" title="Youtube" itemprop="significantLink"><i class="fa fa-youtube"></i></a>
+      <a href="https://plus.google.com/+Paviliongift/posts" class="generic-anchor" target="_blank" title="Google Plus" itemprop="significantLink"><i class="fa fa-google-plus"></i></a>
+      </span>
+  </section>
+  <section class="footer-bottom-section flex-rw">
+    <div class="footer-bottom-wrapper">
+      <i class="fa fa-copyright" role="copyright">
+
+      </i> 2019 Taha  <address class="footer-address" role="company address">Sfax</address><span class="footer-bottom-rights"> - All Rights Reserved - </span>
+    </div>
+    <div class="footer-bottom-wrapper">
+      <a href="/terms-of-use.html" class="generic-anchor" rel="nofollow">Terms</a> | <a href="/privacy-policy.html" class="generic-anchor" rel="nofollow">Privacy</a>
+    </div>
+  </section>
+</footer>

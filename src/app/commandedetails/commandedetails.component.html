@@ -1,0 +1,22 @@
+
+<section class="login-block">
+  <div class="container">
+    <div class="row">
+      <div class=" offset-md-2 col-md-8 login-sec">
+        <h2 class="text-center">Update Command</h2>
+        <div class="form-group">
+          <label class="text-uppercase">Date</label>
+          <input type="text" class="form-control" [(ngModel)]="date" >
+        </div>
+
+
+    </div>
+    <div class="offset-md-2">
+      <div class="row " style="margin-top: 40px" >
+        <button class="btn btn-secondary" style="margin-left: 30px" type="submit" (click)="updateCommande(commande)">Enregistrer</button>
+        <button class="btn btn-secondary" style="margin-left: 20px"><a [routerLink]="['/Main/accueil']">Retour à la page d'accueil</a></button>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
